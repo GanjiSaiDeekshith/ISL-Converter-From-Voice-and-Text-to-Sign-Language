@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+	body {
+        min-height: 150vh; /* Increase height for more scrolling */
+        overflow-y: auto; /* Enable scrolling */
+    }
+    .button {
+        background: linear-gradient(135deg, #ffcc00, #ff5733);
+        border: none;
+        color: white;
+        padding: 15px 30px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:hover {
+        background: linear-gradient(135deg, #ff5733, #ffcc00);
+        transform: scale(1.1);
+        box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-style {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<video width="500" height="380" class="center" autoplay loop>
+  <source src="{% static 'Hello.mp4' %}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div class="form-style">
+    <a href="{% url 'animation' %}">
+        <button class="button">🚀 Click to Start</button>
+    </a>
+</div>
+{% endblock %}

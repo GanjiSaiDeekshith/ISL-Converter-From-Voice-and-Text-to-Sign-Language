@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    body {
+        min-height: 150vh; /* Increase height for more scrolling */
+        overflow-y: auto; /* Enable scrolling */
+    }
+	.submit-btn {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    transform: scale(1.05);
+}
+
+</style>
+
+<div class="form-style">
+    <h1>Sign Up</h1>
+    <form class="site-form" action="." method="post">
+        {% csrf_token %}
+        {{ form }}
+        <br><br>
+		<input class="submit-btn" type="submit" value="Sign Up">
+    </form>
+</div>
+
+<script type="text/javascript">
+    document.getElementsByTagName("span")[0].innerHTML = "";
+    document.getElementsByTagName("span")[1].innerHTML = "";
+    document.body.style.minHeight = "150vh";
+    document.body.style.overflowY = "auto";
+</script>
+{% endblock %}

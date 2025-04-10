@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+	.submit-btn {
+    background: linear-gradient(145deg, #ff5e62, #ff9966);
+    color: white;
+    border: none;
+    border-radius: 8px; /* Slightly less rounded for a cleaner look */
+    padding: 12px 40px; /* More balanced padding */
+    font-size: 16px; /* Slightly smaller text for better alignment */
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%; /* Full width within the form */
+    max-width: 300px; /* Prevents it from becoming too large */
+    margin-top: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+    text-transform: uppercase; /* Optional: makes button text more formal */
+}
+
+.submit-btn:hover {
+    background: linear-gradient(145deg, #ff9966, #ff5e62);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+}
+
+.submit-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.submit-btn:focus {
+    outline: none;
+    border: 2px solid #ff5e62;
+}
+
+.form-style {
+    max-width: 400px;
+    margin: 50px auto;
+    background: #f0f4f8;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-style h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.site-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.site-form input:focus {
+    border-color: #ff5e62;
+    box-shadow: 0 0 8px rgba(255, 94, 98, 0.6);
+    outline: none;
+}
+
+</style>
+
+<div class="form-style">
+	<h1>Log in</h1>
+	<form class="site-form" action="." method="post">
+		{% csrf_token %}
+		{{ form }}
+		{% if request.GET.next %}
+			<input type="hidden" name="next" value="{{ request.GET.next }}">
+		{% endif %}
+		<button type="submit" class="submit-btn">🚀 Log In</button>
+	</form>
+</div>
+
+{% endblock %}
